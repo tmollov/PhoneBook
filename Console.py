@@ -41,8 +41,12 @@ def GetCityName():
         return GetCityName()
     return city
 
-def PrintSelectedContact():
-    pass
+def PrintSelectedContact(db,selectionIndex):
+    for i in range(len(db)):
+        if i == selectionIndex:
+            PrintSelectedPerson(db[i])
+        else:
+            PrintPerson(db[i])
 
 def GetPhoneNumber():
     Print(Enum.EnterPhoneNumber)
@@ -54,3 +58,27 @@ def GetPhoneNumber():
 
 def PrintPerson(personObj):
     print(f"{personObj.phoneNumber} | {personObj.name} - {personObj.city}")
+
+def PrintSelectedPerson(personObj):
+    print(f"{Fore.GREEN}{personObj.phoneNumber} | {personObj.name} - {personObj.city}{Fore.GREEN}{Fore.WHITE}")
+
+def WaitForEnter():
+    while True:
+        key = GetInput()
+        if key == Enum.Enter:
+            return
+
+
+
+def DeleteComfirm(person): 
+    print(f"Do you really want to * {person.name} / {person.phoneNumber}* ({person.city}) ? [yes/no]",end="")
+    while True:
+        decition = input().lower()
+        if decition in ["yes",'y']:
+            return True
+        elif decition in ["no",'n']:
+            return False
+        else:
+            print(Enum.InvalidComfirmation)
+
+        

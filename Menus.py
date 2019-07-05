@@ -9,6 +9,20 @@ import Data
 import pickle
 from Exception import AddException
 
+def ShowOption(index):
+    Console.Clear()
+    if index == 0:
+        pass
+    elif index == 1:
+        AllContactsOption()
+    elif index == 2:
+        AddContactOption()
+    elif index == 3:
+        DeleteContactOption()
+    elif index == 4:
+        UpdateContactOption()
+    ShowMainMenu()
+
 def ShowMainMenu(index=0):
     Console.Clear()
     color = Fore.WHITE
@@ -28,23 +42,65 @@ def ShowMainMenu(index=0):
     strings.append("")
     print("\n".join(strings))
 
+def DeleteContactOption():
+    print(Enum.DeleteInfo)
+    data = Data.GetDb()
+    selection = 0
+    Console.PrintSelectedContact(data,selection)
+    while True:
+        keycode = Console.GetInput()
+        if keycode == Enum.DownArrow: #Down arrow
+            selection += 1
+        elif keycode == Enum.UpArrow: #Up arrow
+            selection -= 1
+        elif keycode == Enum.Enter:
+            if Console.DeleteComfirm(data[selection]):
+                Data.DeleteContact(data[selection].guid)
+                print(Enum.EnterForMainMenu)
+                Console.WaitForEnter()
+                return
+            else:
+                print(Enum.ContactNotDeleted)
+                Console.WaitForEnter()
+                return
 
-def ShowOption(index):
-    Console.Clear()
-    if index == 0:
-        pass
-    elif index == 1:
-        AllContactsOption()
-    elif index == 2:
-        AddContactOption()
-    elif index == 3:
-        pass
-    elif index == 4:
-        pass
-    ShowMainMenu()
+        if selection < 0:
+            selection = 0
+        if selection >= len(data)-1:
+            selection = len(data)-1
+        Console.Clear()
+        print(Enum.DeleteInfo)
+        Console.PrintSelectedContact(data,selection)
 
-def DeleteContact():
-    pass
+def UpdateContactOption():
+    print(Enum.DeleteInfo)
+    data = Data.GetDb()
+    selection = 0
+    Console.PrintSelectedContact(data,selection)
+    while True:
+        keycode = Console.GetInput()
+        if keycode == Enum.DownArrow:
+            selection += 1
+        elif keycode == Enum.UpArrow:
+            selection -= 1
+        elif keycode == Enum.Enter:
+            if Console.DeleteComfirm(data[selection]):
+                Data.DeleteContact(data[selection].guid)
+                print(Enum.EnterForMainMenu)
+                Console.WaitForEnter()
+                return
+            else:
+                print(Enum.ContactNotDeleted)
+                Console.WaitForEnter()
+                return
+
+        if selection < 0:
+            selection = 0
+        if selection >= len(data)-1:
+            selection = len(data)-1
+        Console.Clear()
+        print(Enum.DeleteInfo)
+        Console.PrintSelectedContact(data,selection)
 
 def AllContactsOption():
     contacts = Data.GetDb()
@@ -54,7 +110,6 @@ def AllContactsOption():
     while True:
         if Console.GetInput() == Enum.Enter:
             return
-
 
 def AddContactOption():
     Console.Clear()

@@ -37,6 +37,23 @@ def AddContact(name,city,number):
         data.append(person)
     SaveDb(data)
 
+def DeleteContact(guid):
+    data = GetDb()
+    update = None
+    try:
+        update = list(filter(lambda x : x.guid != guid,data))
+        SaveDb(update)
+        return True
+    except Exception:
+        return False
+
+def UpdateContact(personIndex,person):
+    data = GetDb()
+    data[personIndex].name = person.name
+    data[personIndex].city = person.city
+    data[personIndex].phoneNumber = person.phoneNumber
+    SaveDb(data)    
+
 def IsPersonInDb(data,personObj):
     for person in data:
         if person.Compare(personObj):
