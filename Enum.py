@@ -22,11 +22,13 @@ DeleteInfo = f"{Fore.LIGHTMAGENTA_EX}Select contact to delete...{Fore.LIGHTMAGEN
 
 UpdateContactInfo = f"Select contact to update..."
 
-
 MenuOptions = ["Search by...", "All Contacts",
                   "Add Contact", "Delete Contact", "Edit Contact"]
 
 ContactNotDeleted = f"{Fore.LIGHTCYAN_EX}Contact not deleted.{Fore.LIGHTCYAN_EX}{Fore.WHITE}"
+
+def EnterNameUpdate(name):
+    print(f"Name from {name} to :",end="")
 
 #### INVALID INPUT
 InvalidName = f"Name must contain only lower, upper or mixed case alphabetic character and spaces!"

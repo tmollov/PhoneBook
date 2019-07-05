@@ -73,7 +73,7 @@ def DeleteContactOption():
         Console.PrintSelectedContact(data,selection)
 
 def UpdateContactOption():
-    print(Enum.DeleteInfo)
+    print(Enum.UpdateContactInfo)
     data = Data.GetDb()
     selection = 0
     Console.PrintSelectedContact(data,selection)
@@ -84,7 +84,12 @@ def UpdateContactOption():
         elif keycode == Enum.UpArrow:
             selection -= 1
         elif keycode == Enum.Enter:
-            if Console.DeleteComfirm(data[selection]):
+            Console.Clear()
+            person = data[selection]
+
+            print()
+            nameUpdate = input()
+            if Console.DeleteComfirm():
                 Data.DeleteContact(data[selection].guid)
                 print(Enum.EnterForMainMenu)
                 Console.WaitForEnter()
@@ -132,3 +137,4 @@ def AddContactOption():
         while True:
             if Console.GetInput() == Enum.Enter:
                 return
+
