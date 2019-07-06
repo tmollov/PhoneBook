@@ -11,8 +11,6 @@ class Person:
         self.city = city
         self.phoneNumber = phoneNumber
     
-    
-
     def Compare(self,otherPerson):
         return True if otherPerson.name == self.name and \
            otherPerson.city == self.city and \
@@ -39,7 +37,6 @@ def AddContact(name,city,number):
 
 def DeleteContact(guid):
     data = GetDb()
-    update = None
     try:
         update = list(filter(lambda x : x.guid != guid,data))
         SaveDb(update)
@@ -47,15 +44,30 @@ def DeleteContact(guid):
     except Exception:
         return False
 
-def UpdateContact(personIndex,person):
-    data = GetDb()
-    data[personIndex].name = person.name
-    data[personIndex].city = person.city
-    data[personIndex].phoneNumber = person.phoneNumber
-    SaveDb(data)    
+def UpdateContact(personIndex,name,city,number):
+    data = list(GetDb())
+    try:
+        data[personIndex].name = name
+        data[personIndex].city = city
+        data[personIndex].phoneNumber = number
+        SaveDb(data)
+        return True
+    except Exception:
+        return False
 
 def IsPersonInDb(data,personObj):
     for person in data:
         if person.Compare(personObj):
             return True
     return False
+
+def GetPersonsWith(selection,by):
+    data = GetDb()
+    result = None
+    if selection == Enum.SearchByName:
+        result =  list(filter(lambda n: n.name == by,data))
+    elif selection == Enum.SearchByCity:
+        result = list(filter(lambda n: n.city == by,data))
+    elif selection == Enum.SearchByNumber:
+        result = list(filter(lambda n: n.phoneNumber == by,data))
+    return result

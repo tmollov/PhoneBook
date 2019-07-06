@@ -2,10 +2,33 @@ from colorama import init
 init(convert=True)
 from colorama import Fore, Back, Style
 
+class StringFore:
+    def LIGHTCYAN_EX(content):
+        return F"{Fore.LIGHTCYAN_EX}{content}{Fore.LIGHTCYAN_EX}{Fore.WHITE}"
+
+    def GREEN(content):
+        return F"{Fore.GREEN}{content}{Fore.GREEN}{Fore.WHITE}"
+    
+    def RED(content):
+        return F"{Fore.RED}{content}{Fore.RED}{Fore.WHITE}"
+    
+    def CYAN(content):
+        return F"{Fore.CYAN}{content}{Fore.CYAN}{Fore.WHITE}"
+
+SearchByName = 0
+SearchByCity = 1
+SearchByNumber = 2
+SearchName = "Enter Name: "
+SearchCity = "Enter City: "
+SearchNumber = "Enter Phone Number: "
+
 Enter = "enter"
 UpArrow = "up"
 DownArrow = "down"
 EnterForMainMenu = f"Press {Fore.LIGHTBLUE_EX}ENTER{Fore.LIGHTBLUE_EX}{Fore.WHITE} to return to main menu..."
+
+NewLine = "\n"
+Tab = "\t"
 
 #Menu 
 Welcome = "Welcome to PhoneBook"
@@ -16,19 +39,30 @@ NameAndCityInfo = "Name and City must contain only lower/upper case alphabetic c
 EnterName = "Enter Name: "
 EnterCity = "Enter City: "
 EnterPhoneNumber = "Enter Phone Number: "
-ContactAdded = f"{Fore.GREEN}*** Contact added! ***{Fore.GREEN}{Fore.WHITE}"
-
+SearchBy = "Search by ..."
+ContactAdded = StringFore.GREEN("*** Contact Added! ***")
+ContactUpdated = StringFore.GREEN("*** Contact Updated! ***")
 DeleteInfo = f"{Fore.LIGHTMAGENTA_EX}Select contact to delete...{Fore.LIGHTMAGENTA_EX}{Fore.WHITE}"
 
-UpdateContactInfo = f"Select contact to update..."
+UpdateContactInfo = f"{Fore.LIGHTMAGENTA_EX}Select contact to update...{Fore.LIGHTMAGENTA_EX}{Fore.WHITE}"
 
 MenuOptions = ["Search by...", "All Contacts",
                   "Add Contact", "Delete Contact", "Edit Contact"]
 
+SearchOptions = ["By Name", "By City", "By Phone Number"]
+SearchOptionsClear = ["Name" , "City", "Phone Number"]
 ContactNotDeleted = f"{Fore.LIGHTCYAN_EX}Contact not deleted.{Fore.LIGHTCYAN_EX}{Fore.WHITE}"
 
+
+
 def EnterNameUpdate(name):
-    print(f"Name from {name} to :",end="")
+    return f"Name from {name} to : "
+
+def EnterCityUpdate(city):
+    return f"City from {city} to : "
+
+def EnterNumberUpdate(number):
+    return f"Phone number from {number} to : "
 
 #### INVALID INPUT
 InvalidName = f"Name must contain only lower, upper or mixed case alphabetic character and spaces!"
