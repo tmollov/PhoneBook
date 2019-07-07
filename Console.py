@@ -69,11 +69,11 @@ def GetPhoneNumber(IsClear=False,regex=None):
 
 def SearchByInputInfo(selection):
     if selection == Enum.SearchByName:
-        Print(Enum.SearchName)
+        Print(Enum.EnterName)
     elif selection == Enum.SearchByCity:
-        Print(Enum.SearchCity)
+        Print(Enum.EnterCity)
     elif selection == Enum.SearchByNumber:
-        Print(Enum.SearchNumber)
+        Print(Enum.EnterPhoneNumber)
 
 def IsntSuchAContact(sOption):
     string = f"There isn't such a contact with given {sOption}!"

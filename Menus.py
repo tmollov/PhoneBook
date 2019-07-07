@@ -102,6 +102,7 @@ def DeleteContactOption():
         elif keycode == Enum.Enter:
             if Console.ConfirmDelete(data[selection]):
                 Data.DeleteContact(data[selection].guid)
+                print(Enum.ContactDeleted)
                 print(Enum.EnterForMainMenu)
                 Console.WaitForEnter()
                 return
