@@ -19,8 +19,8 @@ There is 5 main options:
 # Installation
 1. Clone or download this repository
 2. Open terminal app of you OS 
-2.1  pip install colorama
-3. Run Engine.py
+3. On terminal type: pip install colorama
+4. Run Engine.py
 
 # Controls 
 Up and Down Arrow keys to navigate
