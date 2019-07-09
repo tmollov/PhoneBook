@@ -80,7 +80,7 @@ InvalidName = f"Name must contain only lower, upper or mixed case alphabetic cha
 InvNameLen = f"Name length must be between 3-50 charachters!"
 
 InvalidCity = f"City must contain only lower, upper or mixed case alphabetic character and spaces!"
-InvNameLen = f"City length must be between 3-50 charachters!"
+InvCityLen = f"City length must be between 3-50 charachters!"
 
 InvalidPhone = f"Phone number must contains only digits!"
 InvPhoneLen = f"Phone number must be between 5-15"

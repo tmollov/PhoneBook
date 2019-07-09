@@ -29,7 +29,11 @@ def GetPersonName(IsClear=False,regex=None):
     Print(Enum.EnterName if not IsClear else "")
     name = input()
     res = None
-    if regex == None:
+
+    if len(name) < 3 or len(name) > 50:
+        PrintError(Enum.InvNameLen)
+        return GetPersonName(IsClear,regex)
+    elif regex == None:
         res = Validate.Name(name)
     else:
         res = Validate.Name(name,regex)
@@ -43,6 +47,10 @@ def GetCityName(IsClear=False,regex=None):
     Print(Enum.EnterCity if not IsClear else "")
     city = input()
     res = None
+
+    if len(city) < 3 or len(city) > 50:
+        PrintError(Enum.InvCityLen)
+        return GetCityName(IsClear,regex)
     if regex==None:
         res = Validate.City(city)
     else:
@@ -57,6 +65,10 @@ def GetPhoneNumber(IsClear=False,regex=None):
     Print(Enum.EnterPhoneNumber if not IsClear else "")
     number = input()
     res = None
+    
+    if len(number) < 3 or len(number) > 50:
+        PrintError(Enum.InvPhoneLen)
+        return GetPhoneNumber(IsClear,regex)
     if regex==None:
         res = Validate.Number(number)
     else:
