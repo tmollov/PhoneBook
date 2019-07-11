@@ -3,7 +3,7 @@
 
 # Description
 Hi world! 
-This is a mini project from Python Fundamentals course @ softuni.bg
+This is a first mini project from Python Fundamentals course @ softuni.bg
 
 # Summary
 There is 5 main options: 
