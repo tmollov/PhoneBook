@@ -29,3 +29,6 @@ Enter key to choice option
 # There is known bugs that easy to prevent:
 Bug with displaying text on console:
   - Press arrow keys to re-display any menu/option.
+
+# DEMO
+Demonstration of the project can be found there: [LINK](https://github.com/tmollov/PhoneBook/blob/master/PhoneBookDemo.mp4)
